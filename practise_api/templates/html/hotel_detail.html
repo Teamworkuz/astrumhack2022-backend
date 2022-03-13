@@ -1,0 +1,22 @@
+    <ul>
+    <li>{{ obj.rate }}</li>
+    <li>{{ obj.price }}</li>
+    <li>{{ obj.status }}</li>
+    <li>{{ obj.ig }}</li>
+    <li>{{ obj.tg }}</li>
+    <li>{{ obj.phone_num }}</li></ul>
+    <p>{{ obj.hotelmenu.food_name }}</p>
+    {% for x in obj.hotelmenu.all %}
+    {{ x.food_name }}
+    {% endfor %}
+
+    <form action="{% url 'create-hotel-menu' %}" method="POST">{% csrf_token %}
+        <input type="hidden" value="{{ obj.pk }}" name="hotel_id">
+        <input type="text" name="food_name">
+        <input type="number" name="price">
+        <select name="category">
+            <option value="Yevropacha">Yevropacha</option>
+            <option value="Osiyocha">Osiyocha</option>
+        </select>
+        <input type="submit" value="OK">
+    </form>

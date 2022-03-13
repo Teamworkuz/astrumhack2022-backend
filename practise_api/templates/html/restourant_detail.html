@@ -1,0 +1,25 @@
+<ul>
+    <li>{{ obj.author }}</li>
+    <li>{{ obj.name }}</li>
+    <li>{{ obj.rate }}</li>
+    <li>{{ obj.price }}</li>
+    <li>{{ obj.status }}</li>
+    <li>{{ obj.ig }}</li>
+    <li>{{ obj.tg }}</li>
+    <li>{{ obj.dostavka}}</li>
+    <li>{{ obj.phone_num }}</li>
+    {% for x in obj.restourantmenu.all %}
+    {{ x.food_name }}
+    {% endfor %}
+</ul>
+
+<form action="{% url 'create-restourant-menu' %}" method="POST">{% csrf_token %}
+    <input type="hidden" value="{{ obj.pk }}" name="restourant_id">
+    <input type="text" name="food_name">
+    <input type="number" name="price">
+    <select name="category">
+        <option value="Yevropacha">Yevropacha</option>
+        <option value="Osiyocha">Osiyocha</option>
+    </select>
+    <input type="submit" value="OK">
+</form>

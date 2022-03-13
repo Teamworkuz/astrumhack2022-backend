@@ -1,0 +1,63 @@
+{% if user.is_authenticated %}
+<a href="{% url  'create-hotel' %}">Mehmonxona yaratish</a>
+<a href="{% url 'create-restourant' %}">Restoran yaratish</a>
+<a href="{% url 'create-cafe' %}">Cafe yaratish</a>
+<a href="{% url 'logout' %}">Hisobdan chiqish</a>
+{% else %}
+<a href="{% url  'create-user' %}">Ro'yxatdan o'tish</a>
+<a href="{% url 'login' %}">Hisobga kirish</a>
+{% endif %}
+<h1>Foydalanuvchilar</h1>
+{% for user in user_lists %}
+<ul>
+    <li>{{ user.username }}</li>
+    <li>{{ user.fish }}</li>
+    <li>{{ user.email }}</li>
+    <li>{{ user.phone_number }}</li>
+</ul>
+
+{% endfor %}
+<h1>Hotellar</h1>
+{% for post in hotel_lists %}
+
+<ul>
+    <li>{{ post.author }}</li>
+    <li>{{ post.name }}</li>
+    <a href="{% url 'detail-hotel' post.pk %}">Ko'rish >>> </a>
+    <hr>  
+</ul>
+
+{% endfor %}
+
+<h1>Restoranlar</h1>
+{% for post in restourant_lists %}
+<ul>
+    <li>{{ post.author }}</li>
+    <li>{{ post.name }}</li>
+    <li>{{ post.rate }}</li>
+    <li>{{ post.price }}</li>
+    <li>{{ post.status }}</li>
+    <li>{{ post.ig }}</li>
+    <li>{{ post.tg }}</li>
+    <li>{{ post.dostavka}}</li>
+    <li>{{ post.phone_num }}</li>
+    <a href="{% url 'detail-restourant' post.pk%}">Ko'rish >>> </a>
+    <hr>
+</ul>
+{% endfor %}
+
+<h1>Cafelar</h1>
+{% for post in cafe_lists %}
+<ul>
+    <li>{{ post.author }}</li>
+    <li>{{ post.name }}</li>
+    <li>{{ post.rate }}</li>
+    <li>{{ post.price }}</li>
+    <li>{{ post.status }}</li>
+    <li>{{ post.ig }}</li>
+    <li>{{ post.tg }}</li>
+    <li>{{ post.phone_num }}</li>
+    <a href="{% url 'detail-cafe' post.pk %}">Ko'rish</a>
+    <hr>
+</ul>
+{% endfor %}

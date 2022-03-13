@@ -1,0 +1,6 @@
+<form action="" method="POST"> {% csrf_token %} 
+    {{ form.as_p }}
+    <button type="submit">OK</button>
+</form>
+
+<a href="{% url 'create-user' %}">Ro'yxatdan o'tish</a>
